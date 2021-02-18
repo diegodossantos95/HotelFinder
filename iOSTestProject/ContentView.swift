@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    private let interactor = HotelInteractor()
     @State private var checkInDate = Date()
     @State private var checkOutDate = Date()
     @State private var isRewardClient = false
@@ -30,6 +30,7 @@ struct ContentView: View {
                 ).labelsHidden()
 
                 Button("Best hotel") {
+                    self.getBestHotel(checkInDate: checkInDate, checkOutDate: checkOutDate, isReward: isRewardClient)
                 }
             }.padding(16)
         }
@@ -37,8 +38,15 @@ struct ContentView: View {
 }
 
 extension ContentView {
+    private func getBestHotel(checkInDate: Date, checkOutDate: Date, isReward: Bool) -> Hotel? {
+        let days = self.getDays(checkInDate: checkInDate, checkOutDate: checkOutDate)
+        return interactor.getBestHotel(weekDays: days.0, weekendDays: days.1, isReward: isReward)
+    }
     
-    
+    private func getDays(checkInDate: Date, checkOutDate: Date) -> (Int, Int) {
+        
+        return (0,0)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

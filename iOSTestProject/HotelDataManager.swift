@@ -16,7 +16,6 @@ struct HotelDataManager {
                   Hotel(name: "Mar Atlântico", rating: 5, priceWeekend: 150.0, priceWeekendReward: 40.0, priceWeek: 220.0, priceWeekReward: 100.0)]
     }
     
-    
     func getHotels() -> [Hotel] {
         return hotels
     }
